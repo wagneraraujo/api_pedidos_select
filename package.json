@@ -1,0 +1,23 @@
+{
+  "name": "api_pedidos",
+  "version": "1.0.0",
+  "description": "Api de Representantes Select Nutri para cadastro de empresas e pedidos",
+  "main": "index.js",
+  "author": "wagneraraujo",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon --trace-warnings server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.11",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
