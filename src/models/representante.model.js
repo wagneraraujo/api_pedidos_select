@@ -37,5 +37,13 @@ DataSchema.pre("save", async function(next) {
   this.password = await bcrypt.hash(this.password, saltRounds);
 });
 
+DataSchema.pre("findOneAndUpdate", function(next) {
+  let senha = this.getUpdate().password + "";
+  if (senha.length < 50) {
+    this.getUpdate().password = bcrypt.hashSync(senha, 10);
+  }
+  next();
+});
+
 const contaRepresentante = mongoose.model("Representantes", DataSchema);
 module.exports = contaRepresentante;

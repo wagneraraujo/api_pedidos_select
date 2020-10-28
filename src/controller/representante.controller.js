@@ -48,5 +48,37 @@ module.exports = {
     const id = req.params.id;
     const representanteId = await Representante.findById(id);
     res.json(representanteId);
+  },
+
+  async updateRepresentante(req, res) {
+    const {
+      _id,
+      name,
+      last_name,
+      cpf_cpnj,
+      email,
+      phone,
+      state,
+      city,
+      password,
+      type_user
+    } = req.body;
+    const newData = {
+      _id,
+      name,
+      last_name,
+      cpf_cpnj,
+      email,
+      phone,
+      state,
+      city,
+      password,
+      type_user
+    };
+
+    const repre = await Representante.findOneAndUpdate({ _id }, newData, {
+      new: true
+    });
+    res.json(repre);
   }
 };
