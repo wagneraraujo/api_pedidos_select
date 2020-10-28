@@ -80,5 +80,11 @@ module.exports = {
       new: true
     });
     res.json(repre);
+  },
+
+  async deleteRepresentante(req, res) {
+    const id = req.params.id;
+    const remove = await Representante.findByIdAndDelete(id);
+    res.json({ message: "Sua conta foi excluida com sucesso" });
   }
 };
