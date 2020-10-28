@@ -8,4 +8,6 @@ routes.get("/", (req, res) => {
 
 routes.post("/representante/cadastro", representante.create);
 
+routes.get("/representantes", representante.index);
+
 module.exports = routes;
