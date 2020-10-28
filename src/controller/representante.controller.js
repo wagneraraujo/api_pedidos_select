@@ -1,4 +1,4 @@
-const { find } = require("../models/representante.model");
+const { findById } = require("../models/representante.model");
 const Representante = require("../models/representante.model");
 
 module.exports = {
@@ -42,5 +42,11 @@ module.exports = {
     } else {
       return res.status(500).json(verificar_email);
     }
+  },
+
+  async detailsRepresentante(req, res) {
+    const id = req.params.id;
+    const representanteId = await Representante.findById(id);
+    res.json(representanteId);
   }
 };
