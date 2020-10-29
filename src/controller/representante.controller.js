@@ -1,4 +1,3 @@
-const { findById } = require("../models/representante.model");
 const Representante = require("../models/representante.model");
 
 module.exports = {
