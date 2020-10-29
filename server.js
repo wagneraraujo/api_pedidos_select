@@ -12,7 +12,8 @@ app.use(cors());
 
 mongoose.connect("mongodb://localhost:27017/select", {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
 mongoose.set("useCreateIndex", true);
 
