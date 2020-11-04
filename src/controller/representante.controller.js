@@ -1,4 +1,6 @@
 const Representante = require("../models/representante.model");
+const jwt = require("jsonwebtoken");
+const secret = "mysecret";
 
 module.exports = {
   async index(req, res) {
@@ -85,5 +87,32 @@ module.exports = {
     const id = req.params.id;
     const remove = await Representante.findByIdAndDelete(id);
     res.json({ message: "Sua conta foi excluida com sucesso" });
+  },
+
+  async login(req, res) {
+    const { email, password } = req.body;
+    await Representante.findOne({ email, type_user: 1 }, function(err, user) {
+      if (err) {
+        console.log(err);
+        res.status(200).json({ erro: "erro do servidor" });
+      } else if (!user) {
+        res.status(200).json({ status: 2, error: "email ou senha errados" });
+      } else {
+        const payload = { email };
+        const token = jwt.sign(payload, secret, {
+          expiresIn: "2h"
+        });
+        res.cookie("token", token, { httpOnly: true });
+        res
+          .status(200)
+          .json({
+            status: 1,
+            auth: true,
+            token: token,
+            id_client: user._id,
+            name
+          });
+      }
+    });
   }
 };

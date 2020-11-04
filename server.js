@@ -15,7 +15,6 @@ mongoose.connect("mongodb://localhost:27017/select", {
   useUnifiedTopology: true,
   useFindAndModify: false
 });
-mongoose.set("useCreateIndex", true);
 
 app.use(cookieParser());
 app.use(express.json());
