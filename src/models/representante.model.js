@@ -45,5 +45,19 @@ DataSchema.pre("findOneAndUpdate", function(next) {
   next();
 });
 
+DataSchema.methods.isCorrectPassword = function(password, callback) {
+  try {
+    bcrypt.compare(password, this.password, function(err, same) {
+      if (err) {
+        callback(err);
+      } else {
+        callback(err, same);
+      }
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const contaRepresentante = mongoose.model("Representantes", DataSchema);
 module.exports = contaRepresentante;

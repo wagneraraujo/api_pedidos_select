@@ -13,7 +13,8 @@ app.use(cors());
 mongoose.connect("mongodb://localhost:27017/select", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useCreateIndex: true
 });
 
 app.use(cookieParser());

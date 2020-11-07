@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "nodemon --trace-warnings server.js"
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",

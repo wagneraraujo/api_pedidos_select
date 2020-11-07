@@ -1,10 +1,9 @@
-const { findById } = require("../models/produto.model");
 const criarProduto = require("../models/produto.model");
 
 module.exports = {
   async index(req, res) {
     const products = await criarProduto.find();
-    res.json({ Product });
+    res.json(products);
   },
 
   async create(req, res) {

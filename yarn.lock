@@ -1071,6 +1071,11 @@ node-addon-api@^3.0.0:
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-3.0.2.tgz#04bc7b83fd845ba785bb6eae25bc857e1ef75681"
   integrity sha512-+D4s2HCnxPd5PjjI0STKwncjXTUKKqm74MDMz9OPXavjsGmjkvwgLtA5yoxJUdmpj52+2u+RrXgPipahKczMKg==
 
+node-inspect@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/node-inspect/-/node-inspect-2.0.0.tgz#31e6be6e877fb35d4c7bcd4c6e5cd8c5209477fc"
+  integrity sha512-vaDNU6Fa/vt8gv/PV+QoeSIPhcBnHMiNOtInxcojfagspQg5KP9HloUDGJWIacamT8Agiu51eF+fuBjrE25a6w==
+
 node-pre-gyp@0.15.0:
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.15.0.tgz#c2fc383276b74c7ffa842925241553e8b40f1087"
