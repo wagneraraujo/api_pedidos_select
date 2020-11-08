@@ -1,4 +1,6 @@
 const Representante = require("../models/representante.model");
+const criarPedido = require("../models/pedidos.model");
+const criarEmpresa = require("../models/empresas.model");
 const jwt = require("jsonwebtoken");
 const secret = "mysecret";
 
@@ -162,5 +164,46 @@ module.exports = {
     } catch (err) {
       console.log(err);
     }
+  },
+
+  //criar pedidos representante
+  async getRepresentantePedidos(req, res, next) {
+    const id = req.params.id;
+    const representante = await Representante.findById(id).populate(
+      "criarpedidos"
+    );
+    res.status(200).json(representante);
+  },
+
+  async createPedidosRepresentante(req, res, next) {
+    const id = req.params.id;
+    const newPedido = new criarPedido(req.body);
+    //buscar usuario
+    const user = await Representante.findById(id);
+    newPedido.criarPedido = user;
+    await newPedido.save();
+    user.criarpedidos.push(newPedido);
+    //salvar usuario e pedido
+    await user.save();
+    res.status(201).json(newPedido);
+    //atribuir um representante a um pedido
+  },
+
+  async cadastrarEmpresa(req, res, next) {
+    const id = req.params.id;
+    const newEmpresa = new criarEmpresa(req.body);
+
+    //buscar usuario
+    const user = await Representante.findById(id);
+    newEmpresa.criarEmpresa = user;
+    await newEmpresa.save();
+
+    user.criarempresa.push(newEmpresa);
+    console.log(user);
+
+    //salvar usuario e pedido
+    await user.save();
+    res.status(201).json(newEmpresa);
+    //atribuir um representante a um pedido
   }
 };

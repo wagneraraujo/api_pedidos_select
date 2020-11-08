@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 
 const DataSchema = new mongoose.Schema(
   {
+    representante_criador: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "representante"
+    },
     razao_social: String,
     nome_fantasia: String,
     estado: String,
@@ -10,11 +14,11 @@ const DataSchema = new mongoose.Schema(
     bairro: String,
     endereco: String,
     cep: { type: Number, required: true },
-    cpnj: { type: Number, required: true, unique: true },
+    cpnj: { type: Number, required: true },
     inscricao_estadual: String,
     qtd_funcionarios: Number,
     email: String,
-    phone: { type: Number, required: true },
+    phone: { type: Number },
     //endereco combranca
     endereco_cobranca: String,
     cidade_cobranca: String,

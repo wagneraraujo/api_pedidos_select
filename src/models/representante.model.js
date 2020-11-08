@@ -6,13 +6,26 @@ const DataSchema = new mongoose.Schema(
   {
     name: String,
     last_name: String,
-    cpf_cpnj: { type: Number, required: true, unique: true },
+    cpf_cpnj: { type: Number },
     email: String,
-    phone: { type: Number, required: true },
+    phone: { type: Number },
     state: String,
     city: String,
     password: String,
-    type_user: { type: Number, default: 1 }
+    type_user: { type: Number, default: 1 },
+
+    criarpedidos: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Pedidos"
+      }
+    ],
+    criarempresa: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Empresa"
+      }
+    ]
   },
   {
     timestamps: true
