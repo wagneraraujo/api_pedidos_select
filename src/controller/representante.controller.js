@@ -189,21 +189,26 @@ module.exports = {
     //atribuir um representante a um pedido
   },
 
-  async cadastrarEmpresa(req, res, next) {
+  async representanteCadastroEmpresas(req, res, next) {
     const id = req.params.id;
     const newEmpresa = new criarEmpresa(req.body);
 
     //buscar usuario
-    const user = await Representante.findById(id);
-    newEmpresa.criarEmpresa = user;
+    const repre = await Representante.findById(id);
+    newEmpresa.criarEmpresa = repre;
+
     await newEmpresa.save();
+    repre.empresacadastro.push(newEmpresa);
+    await repre.save();
 
-    user.criarempresa.push(newEmpresa);
-    console.log(user);
-
-    //salvar usuario e pedido
-    await user.save();
     res.status(201).json(newEmpresa);
-    //atribuir um representante a um pedido
+  },
+
+  async empresasDosRepresentantes(req, res, next) {
+    const id = req.params.id;
+    const representante = await Representante.findById(id).populate(
+      "empresacadastro"
+    );
+    res.status(200).json(representante.empresacadastro);
   }
 };

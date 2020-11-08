@@ -3,10 +3,6 @@ const mongoose = require("mongoose");
 
 const DataSchema = new mongoose.Schema(
   {
-    representante_criador: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "representante"
-    },
     razao_social: String,
     nome_fantasia: String,
     estado: String,
@@ -35,12 +31,15 @@ const DataSchema = new mongoose.Schema(
     agencia: String,
     conta: String,
     instituicao: String,
-    favorecido: String
+    favorecido: String,
+    statuspedido: { type: String, default: "Em análise" },
+
+    criado: { type: mongoose.Schema.Types.ObjectId, ref: "Representantes" }
   },
   {
     timestamps: true
   }
 );
 
-const cadastroEmpresa = mongoose.model("Empresa", DataSchema);
-module.exports = cadastroEmpresa;
+const criarEmpresa = mongoose.model("Empresa", DataSchema);
+module.exports = criarEmpresa;

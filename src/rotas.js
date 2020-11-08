@@ -30,11 +30,19 @@ routes.get("/admin/empresas/", empresa.index);
 routes.post("/admin/cadastro-empresa/", empresa.create);
 routes.put("/admin/empresas/atualizar/", empresa.update);
 routes.delete("/admin/empresas/:id/", empresa.delete);
+//detalhe da empresa
+routes.get("/admin/empresa/detalhe/:id", empresa.empresaDetalhe);
 
-//empresas cadastradas por representantes
+//cadastrar empresas por representantes
 routes.post(
   "/admin/representante/:id/cadastrar-empresas",
-  representante.cadastrarEmpresa
+  representante.representanteCadastroEmpresas
+);
+
+//todas empresas de um representante
+routes.get(
+  "/admin/representante/:id/minhas-empresas",
+  representante.empresasDosRepresentantes
 );
 
 //pedidos

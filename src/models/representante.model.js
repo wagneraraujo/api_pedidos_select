@@ -13,6 +13,12 @@ const DataSchema = new mongoose.Schema(
     city: String,
     password: String,
     type_user: { type: Number, default: 1 },
+    empresacadastro: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Empresa"
+      }
+    ],
 
     criarpedidos: [
       {
@@ -20,12 +26,7 @@ const DataSchema = new mongoose.Schema(
         ref: "Pedidos"
       }
     ],
-    criarempresa: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Empresa"
-      }
-    ]
+   
   },
   {
     timestamps: true

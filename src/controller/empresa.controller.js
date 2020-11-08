@@ -152,5 +152,11 @@ module.exports = {
     const id = req.params.id;
     const deleteEmpresa = await cadastroEmpresa.findByIdAndRemove(id);
     res.status(500).json({ message: ` excluido com sucesso` });
+  },
+
+  async empresaDetalhe(req, res, next) {
+    const id = req.params.id;
+    const empresaId = await cadastroEmpresa.findById(id);
+    res.status(200).json(empresaId);
   }
 };
